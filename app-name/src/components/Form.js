@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {useState, useEffect }  from 'react';
 import * as Yup from "yup";
 
 function Form() {
+    const [user, setUser] = useState([]);
+
+    const [formState, setFormState] = useState({
+        name: "",
+        email: "",
+        password: "",
+        reason: "",
+        terms: ""
+    });
+
+    const[isButtonDisabled, setIsButtonDisabled] = useState(true)
+
     return (
         <form>
             <label htmlFor="name">
