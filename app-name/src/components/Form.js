@@ -14,6 +14,21 @@ function Form() {
 
     const[isButtonDisabled, setIsButtonDisabled] = useState(true)
 
+    const [errors, setErrors] = useState({
+        name: "",
+        email: "",
+        password: "",
+        reason: "",
+        terms: ""
+    });
+
+    const formSchema = yup.object().shape({
+        name: yup.string().required("Name is a req. field"),
+        email: yup.string().email("Must be a valid email address").required(),
+        terms: yup.boolean().oneOf([true], "Please agree to Terms & Conditions"),
+        password: yup.string().required("password required")
+    });
+
     return (
         <form>
             <label htmlFor="name">
@@ -32,7 +47,7 @@ function Form() {
                 Do you agree to the terms and conditions?
                 <input id="terms" type="radio" name="terms" />
             </label>
-            <button>Submit!</button>
+            <button type="submit" disabled={isButtonDisabled}>Submit!</button>
         </form>
     )
 };
