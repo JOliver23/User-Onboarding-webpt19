@@ -18,7 +18,6 @@ function Form() {
         name: "",
         email: "",
         password: "",
-        reason: "",
         terms: ""
     });
 
