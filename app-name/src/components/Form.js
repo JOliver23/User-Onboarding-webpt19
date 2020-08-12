@@ -28,6 +28,25 @@ function Form() {
         password: yup.string().required("password required")
     });
 
+    const validateChange = e => {
+        yup
+            .reach(formSchema, e.target.name)
+            .validate(e.target.value)
+            .then(valid => {
+                setErrors({ ...errors, [e.target.name]: ""  })
+            })
+            .catch(err => {
+                console.log("error: ", err)
+                setErrors({ ...errors, [e.target.name]: err.errors[0]})
+            })
+    };
+
+    useEffect(() => {
+        formSchema.isValid(formState).then(valid => {
+            console.log("valid?", valid)
+            setIsButtonDisabled(!valid)
+        })
+    }, [formState])
     return (
         <form>
             <label htmlFor="name">
