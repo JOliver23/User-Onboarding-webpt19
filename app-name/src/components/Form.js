@@ -81,7 +81,7 @@ function Form() {
         <form onSubmit={formSubmit}>
             <label htmlFor="name">
                 Name:
-                <input id="name" type="name" name="name" placeholder="name" onChange={valueChange} value={formState.name}/>
+                <input id="name" type="name" name="name" placeholder="name" onChange={valueChange} value={formState.name} data-cy="name"/>
             </label>
             <label htmlFor="email">
                 Email:
@@ -89,7 +89,7 @@ function Form() {
             </label>
             <label htmlFor="password">
                 Password
-                <input id="password" type="password" name="password" placeholder="Password" onChange={valueChange} value={formState.password} />
+                <input id="password" type="password" name="password" placeholder="password" onChange={valueChange} value={formState.password} />
             </label>
             <label htmlFor="terms">
                 Do you agree to the terms and conditions?
